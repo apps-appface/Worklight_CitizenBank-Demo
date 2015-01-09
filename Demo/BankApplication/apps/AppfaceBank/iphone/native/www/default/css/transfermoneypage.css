@@ -1,0 +1,28 @@
+
+/* Stylesheet content from css/transfermoneypage.css in folder common */
+@CHARSET "UTF-8";
+
+#transferMoneyHeader {
+	background-color: green;
+	color: white;
+	border: 0px;
+	text-shadow: none;
+}
+
+#cancelTransferBtn {
+	background-color: red;
+	padding-left: 0px;
+	height: 70px;
+	width: 70px;
+	border: 1px solid red;
+	border-radius: 70px;
+}
+
+#transferBtn {
+	background-color: green;
+	padding-left: 0px;
+	height: 70px;
+	width: 70px;
+	border: 1px solid green;
+	border-radius: 70px;
+}

@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+#addBeneficieryHeader {
+	background-color: green;
+	color: white;
+	border: 0px;
+	text-shadow: none;
+}
+
+#cancelBtn {
+	background-color: red;
+	padding-left: 0px;
+	height: 70px;
+	width: 70px;
+	border: 1px solid red;
+	border-radius: 70px;
+}
+
+#addBtn {
+	background-color: green;
+	padding-left: 0px;
+	height: 70px;
+	width: 70px;
+	border: 1px solid green;
+	border-radius: 70px;
+}

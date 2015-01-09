@@ -1,0 +1,15 @@
+body{
+	margin: 0px auto;
+	text-shadow: none;
+}
+
+.ui-btn-left {
+	height: 35px;
+	width: 35px;;
+}
+
+.ui-btn-right {
+	background-color: transparent;
+	text-shadow: none;
+	color: white;
+}

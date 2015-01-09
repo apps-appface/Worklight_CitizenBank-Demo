@@ -1,0 +1,303 @@
+<!DOCTYPE HTML><html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AppfaceBank</title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport">
+<!--
+    			<link rel="shortcut icon" href="images/favicon.png">
+    			<link rel="apple-touch-icon" href="images/apple-touch-icon.png"> 
+    		-->
+        <link href="worklight/worklight.css" rel="stylesheet">
+        <link href="jqueryMobile/jquery.mobile-1.4.5.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/loginpage.css" rel="stylesheet">
+        <link href="css/homepage.css" rel="stylesheet">
+        <link href="css/myaccountspage.css" rel="stylesheet">
+        <link href="css/beneficierypage.css" rel="stylesheet">
+        <link href="css/addbeneficierypage.css" rel="stylesheet">
+        <link href="css/fundtransferpage.css" rel="stylesheet">
+        <link href="css/transfermoneypage.css" rel="stylesheet">
+        <link href="css/rechargemobilepage.css" rel="stylesheet">
+        <link href="css/ministatementpage.css" rel="stylesheet">
+        <script>
+		// Define WL namespace.
+		var WL = WL ? WL : {};
+		/**
+		 * WLClient configuration variables.
+		 * Values are injected by the deployer that packs the gadget.
+		 */
+		 WL.StaticAppProps = {
+   "APP_DISPLAY_NAME": "AppfaceBank",
+   "APP_ID": "AppfaceBank",
+   "APP_SERVICES_URL": "\/apps\/services\/",
+   "APP_VERSION": "1.0",
+   "ENVIRONMENT": "iphone",
+   "LOGIN_DISPLAY_TYPE": "embedded",
+   "WORKLIGHT_NATIVE_VERSION": "557946958",
+   "WORKLIGHT_PLATFORM_VERSION": "6.2.0.01.20141027-1531",
+   "WORKLIGHT_ROOT_URL": "\/apps\/services\/api\/AppfaceBank\/iphone\/"
+};
+</script>
+		<script src="worklight/cordova.js"></script>
+		<script src="worklight/wljq.js"></script>
+		<script src="worklight/worklight.js"></script>
+		<script src="worklight/checksum.js"></script>
+		<script src="worklight/jsonstore.js"></script>
+		<script>
+	window.$ = window.jQuery = WLJQ;
+</script>
+<script src="jqueryMobile/jquery.mobile-1.4.5.js"></script>
+    </head>
+    <body style="display: none;">
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Login Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="loginPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div id="AuthBody">
+                <div align="center" data-role="header" id="loginHeader">
+                    <img src="images/citizenbank.png" style="width: 250px">
+			</div>
+                <div align="center" data-role="content">
+                    <div id="locateDiv" style="padding: 5px; float: left; position: relative; margin: 10px;">
+                        <img src="images/atm.png" style="width: 25px;"> <label style="text-shadow: none; font-size: x-small; color: green;">Locate
+						ATM</label>
+                    </div>
+                    <div id="CCDiv" style="padding: 5px; position: relative; float: left; margin: 10px;">
+                        <img src="images/cc.png" style="width: 25px;"> <label style="text-shadow: none; font-size: x-small; color: green;">Currency
+						Converter</label>
+                    </div>
+                    <div id="BSDiv" style="padding: 5px; float: left; position: relative; margin: 10px;">
+                        <img src="images/bs.png" style="width: 25px;"> <label style="text-shadow: none; font-size: x-small; color: green;">Barcode
+						Scanner</label>
+                    </div>
+                    <i id="errorMessage" style="color: #c20000;"></i>
+                </div>
+                <div align="center" data-position="fixed" data-role="footer" style="margin-bottom: 5px; width: 100%; background-color: transparent; border: 0px;">
+                    <div id="loginForm">
+                        <div style="margin: 20px;">
+                            <label style="color: white;">Sign In</label> <input id="email" placeholder="Email" style="background-color: white; text-color: green; border: 1px solid transparent; padding: 10px;" type="email">
+						<input id="password" placeholder="Password" style="background-color: white; text-color: green; border: 1px solid transparent; padding: 10px;" type="password">
+                            <br> 
+                            <a class="action-button shadow animate red" href="#" id="loginButton" style="float: right;">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="AppBody" style="display: none;">
+                <div data-position="fixed !important" data-role="header" id="homeHeader">
+                    <h3>Home</h3>
+                    <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+			</div>
+                <div align="center" data-role="content" style="padding: 5px;">
+                    <div>
+                        <p>
+                            <i id="user_last_login" style="font-size: small; color: green; text-shadow: none;">Last Login : </i>
+                        </p>
+                    </div>
+                    <div>
+                        <img alt="" id="userImage" src="images/user.png">
+					<p>
+                            <b id="user_name" style="color: green; text-shadow: none;"></b>
+                            <br>
+                            <i id="user_address" style="font-size: small; color: green; text-shadow: none;"></i>
+                        </p>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="my_boxes" id="myAccounts" style="background-color: #ff748c;">
+                                <i style="line-height: 80px;">Account Overview</i>
+                            </div>
+                            <div class="my_boxes" id="fundTransfer" style="background-color: #75ad3e;">
+                                <i style="line-height: 80px;">Fund Transfer</i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="my_boxes" id="beneficieries" style="background-color: #ECBE27;">
+                                <i style="line-height: 80px;">Beneficieries</i>
+                            </div>
+                            <div class="my_boxes" id="miniStatement" style="background-color: #40e0d0;">
+                                <i style="line-height: 80px;">Mini Statement</i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="my_boxes" id="profile" style="background-color: #FA5882;">
+                                <i style="line-height: 80px;">Profile</i>
+                            </div>
+                            <div class="my_boxes" id="more" style="background-color: #A9E2F3;">
+                                <i style="line-height: 80px;">More Services</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div align="center" data-position="fixed" data-role="footer" style="width: 100%; background-color: gray; border: 0px;">
+                    <marquee behavior="scroll" direction="left" id="sensex" style="color: green; text-shadow: none; font-size: large; padding: 10px;"></marquee>
+                </div>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -My Accounts Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="myAccountsPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="accountsHeader">
+                <img class="ui-btn-left" id="accountsBack" src="images/back.png">
+			<h3>My Accounts</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div class="ui-content" data-role="main" style="margin-top: 5px;">
+                <ul data-role="listview" id="accountsLV" style="background-color: transparent; text-shadow: none; padding: 10px; margin: 5px;">
+                </ul>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Beneficieries Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="beneficieriesPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="beneficieryHeader">
+                <img class="ui-btn-left" id="beneficieryBack" src="images/back.png">
+			<h3>Beneficieries</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div class="ui-content" data-role="main" style="margin-top: 5px;">
+                <div align="center" id="addBeneficiery" style="border: 1px solid green; border-radius: 5px; height: 50px; padding: 10px;">
+                    <img src="images/add.png" style="width: 50px; float: left;"><label style="text-shadow: none; font-size: x-large; color: green; line-height: 50px;">Add
+					Beneficiery</label>
+                </div>
+                <div align="center" style="margin-top: 30px; padding: 10px;">
+                    <ul data-role="listview" id="beneficieryLV">
+                        <li>
+                            <div style="float: left; color: green; text-shadow: none;">
+                                <label style="color: gray;">Mohan</label><label style="font-size: x-small;">Mobile No : 0123456789</label><label style="font-size: x-small;">A/c No : 12345678</label>
+                            </div>
+                            <div align="center" class="delete" style="float: right; border-radius: 5px; background-color: red; text-shadow: none; color: white; width: 60px; height: 60px; line-height: 60px;">Delete</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Add Beneficieries Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="addBeneficieriesPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="addBeneficieryHeader">
+                <img class="ui-btn-left" id="addBeneficieryBack" src="images/back.png">
+			<h3>Add Beneficiery</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div class="ui-content" data-role="main" style="margin-top: 15px;">
+                <div style="border-radius: 5px; border: 1px solid green; padding: 10px;">
+                    <label for="bname" style="color: green; text-shadow: none;">Beneficiery
+					Name</label> <input id="bname" placeholder="Eg : Rahul" type="text">
+				<label for="bname" style="color: green; text-shadow: none;">Account
+					No</label> <input id="baccount" placeholder="Eg : 1234" type="number">
+				<label for="bname" style="color: green; text-shadow: none;">Mobile
+					No</label> <input id="bmobile" placeholder="Eg : 9629224566" type="number">
+				<label for="bname" style="color: green; text-shadow: none;">Email
+					Id</label> <input id="bemail" placeholder="Eg : rahul@gmail.com" type="email">
+                </div>
+                <div align="center" style="padding: 10px; margin-top: 10px;">
+                    <div id="cancelBtn" style="float: left">
+                        <label style="color: white; line-height: 70px;">Cancel</label>
+                    </div>
+                    <div id="addBtn" style="float: right">
+                        <label style="color: white; line-height: 70px;">Add</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Fund Transfer Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="fundTransferPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="fundTransferHeader">
+                <img class="ui-btn-left" id="fundTransferBack" src="images/back.png">
+			<h3>Fund Transfer</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div align="center" class="ui-content" data-role="main">
+                <div class="transferBtns" id="transferMoney">
+                    <img src="images/transfer.png" style="width: 50%;"> <label style="color: white; text-shadow: none; line-height: 25px; font-size: small;">Transfer
+					Money</label>
+                </div>
+                <div class="transferBtns" id="rechargeMoney">
+                    <img src="images/mobile.png" style="width: 50%;"> <label style="color: white; text-shadow: none; line-height: 25px; font-size: small;">Recharge
+					Mobile</label>
+                </div>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Transfer Money Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="transferMoneyPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="transferMoneyHeader">
+                <img class="ui-btn-left" id="transferMoneyBack" src="images/back.png">
+			<h3>Transfer Money</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div class="ui-content" data-role="main">
+                <div style="border: 1px solid green; border-radius: 5px; padding: 10px;">
+                    <select id="payeeAccountList"></select> <select id="beneficieryAccountList"></select> <label for="transferAmount" style="color: green; text-shadow: none;">Amount (In INR)</label> <input id="amount" placeholder="Eg : 50000" type="number"> <label for="remark" style="color: green; text-shadow: none;">Remark</label><input id="remark" placeholder="Eg : Money is transfered" type="text">
+                    <div align="center" style="padding: 10px; margin-top: 10px;">
+                        <div id="cancelTransferBtn" style="float: left">
+                            <label style="color: white; line-height: 70px;">Cancel</label>
+                        </div>
+                        <div id="transferBtn" style="float: right">
+                            <label style="color: white; line-height: 70px;">Add</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Recharge Mobile Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="rechargeMobilePage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="rechargeMobileHeader">
+                <img class="ui-btn-left" id="rechargeMobileBack" src="images/back.png">
+			<h3>Recharge Mobile</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div class="ui-content" data-role="main">
+                <div style="border: 1px solid green; border-radius: 5px; padding: 10px;">
+                    <label for="mobile_no" style="color: green; text-shadow: none;">Enter
+					Mobile No</label><input id="mobile_no" placeholder="Eg : 9629224566" type="text"> <label for="rechargeAmount" style="color: green; text-shadow: none;">Amount (In INR)</label> <input id="rechargeAmount" placeholder="Eg : 500" type="number">
+                    <div align="center" style="padding: 10px; margin-top: 10px;">
+                        <div id="cancelRechargeBtn" style="float: left">
+                            <label style="color: white; line-height: 70px; font-size: small;">Cancel</label>
+                        </div>
+                        <div id="rechargeBtn" style="float: right">
+                            <label style="color: white; line-height: 70px; font-size: small;">Recharge</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Mini Statement Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <div data-role="page" id="miniStatementPage" style="background-image: url('./images/building.jpg'); background-repeat: no-repeat;">
+            <div data-position="fixed !important" data-role="header" id="miniStatementHeader">
+                <img class="ui-btn-left" id="miniStatementBack" src="images/back.png">
+			<h3>Mini Statement</h3>
+                <img class="ui-btn-right" onClick="WL.Client.logout('LoginRealm', {onSuccess:WL.Client.reloadApp})" src="images/logout.png" style="width: 35px;">
+		</div>
+            <div class="ui-content" data-role="main">
+                <table id="miniStatementTable">
+                    <TBODY>
+                        <tr style="font-size: small; text-shadow: none; padding: 10px; color:gray;">
+                            <th>Date</th>
+					<th>Type</th>
+					<th>From</th>
+					<th>To</th>
+					<th>Amount</th>
+                        </tr>
+                        <tr style="font-size: small; margin:10px;text-shadow: none;color:green;padding: 10px;">
+                            <td style="background-color: #bdbdbd; color:white;border-radius:3px;padding:5px;">April 24</td>
+					<td style="color:blue;">mobile recharge</td>
+					<td>1001</td>
+					<td>1007</td>
+					<td style="color:red;">Rs.50000</td>
+                        </tr>
+                    </TBODY>
+                </table>
+            </div>
+        </div>
+        <script src="js/initOptions.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/messages.js"></script>
+	<script src="js/loginPage.js"></script>
+	<script src="js/homePage.js"></script>
+	<script src="js/myAccountsPage.js"></script>
+	<script src="js/beneficieryPage.js"></script>
+	<script src="js/addBeneficieryPage.js"></script>
+	<script src="js/fundTransferPage.js"></script>
+	<script src="js/transferMoneyPage.js"></script>
+	<script src="js/rechargeMobilePage.js"></script>
+	<script src="js/miniStatementPage.js"></script>
+	<script src="js/jsonstore_manager.js"></script>
+	<script src="js/authentication.js"></script>
+    </body>
+</html>

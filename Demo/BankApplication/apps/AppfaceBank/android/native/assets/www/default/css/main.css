@@ -1,0 +1,21 @@
+
+/* Stylesheet content from css/main.css in folder common */
+body{
+	margin: 0px auto;
+	text-shadow: none;
+}
+
+.ui-btn-left {
+	height: 35px;
+	width: 35px;;
+}
+
+.ui-btn-right {
+	background-color: transparent;
+	text-shadow: none;
+	color: white;
+}
+/* Stylesheet content from css/main.css in folder android */
+
+/* this CSS file extends the application CSS file found under common\css */
+

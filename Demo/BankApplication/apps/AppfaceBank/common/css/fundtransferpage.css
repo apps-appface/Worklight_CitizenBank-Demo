@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+#fundTransferHeader {
+	background-color: green;
+	color: white;
+	border: 0px;
+	text-shadow: none;
+}
+
+.transferBtns {
+	margin: 20px;
+	padding: 10px;
+	background-color: #2ECCFA;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #2ECCFA;
+	border-radius: 100px;
+}

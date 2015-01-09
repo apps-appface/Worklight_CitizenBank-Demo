@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wl:adapter name="SensexAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:wl="http://www.worklight.com/integration"
+	xmlns:http="http://www.worklight.com/integration/http">
+
+	<displayName>SensexAdapter</displayName>
+	<description>SensexAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>www.bseindia.com</domain>
+			<port>80</port>		
+		</connectionPolicy>
+		<loadConstraints maxConcurrentConnectionsPerNode="2" />
+	</connectivity>
+
+	<procedure name="getSensex"/>
+	
+</wl:adapter>

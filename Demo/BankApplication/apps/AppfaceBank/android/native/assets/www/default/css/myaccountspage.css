@@ -1,0 +1,10 @@
+
+/* Stylesheet content from css/myaccountspage.css in folder common */
+@CHARSET "UTF-8";
+
+#accountsHeader {
+	background-color: green;
+	color: white;
+	border: 0px;
+	text-shadow: none;
+}

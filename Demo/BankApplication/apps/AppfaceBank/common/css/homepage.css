@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+#homeHeader {
+	background-color: green;
+	color: white;
+	border: 0px;
+	text-shadow: none;
+}
+
+.my_boxes {
+	float: left;
+	width: 50%;
+	height: 80px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+#userImage {
+	padding-left: 0px;
+	width: 40%;
+	border: 2px solid black;
+	border-radius: 50%;
+}

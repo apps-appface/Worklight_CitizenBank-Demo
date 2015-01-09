@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="BankApplication">
+        <wb-resource deploy-path="/" source-path="/apps/AppfaceBank/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/AppfaceBank/android"/>
+        <wb-resource deploy-path="/" source-path="/apps/AppfaceBank/iphone"/>
+        <property name="context-root" value="BankApplication"/>
+    </wb-module>
+</project-modules>
