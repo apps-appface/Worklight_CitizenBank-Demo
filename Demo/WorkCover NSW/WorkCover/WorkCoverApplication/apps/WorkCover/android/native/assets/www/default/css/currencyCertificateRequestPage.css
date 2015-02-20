@@ -1,0 +1,42 @@
+
+/* Stylesheet content from css/currencyCertificateRequestPage.css in folder common */
+@CHARSET "UTF-8";
+
+div.subHead {
+	font-size: medium !important;
+	background-color: #3590FA;
+	color: #ffffff;
+	text-align: center;
+}
+
+div#currencyCertificateRequestPage {
+	color: #1E60AD;
+	background-color: #D4E6FC;
+}
+
+#rccSuburbField {
+	display: inline-table;
+}
+
+em {
+	color: red;
+	font-weight: bold;
+}
+
+@media ( min-width : 28em) {
+	div#rccContainer {
+		margin: 2%;
+		padding: 2%;
+		color: #8C3030;
+		text-shadow: none;
+	}
+	.ui-field-contain>label,.ui-field-contain .ui-controlgroup-label,.ui-field-contain>.ui-rangeslider>label
+		{
+		width: 68%;
+		font-size: 20px;
+	}
+	.ui-field-contain>label  ~ [class*="ui-"],.ui-field-contain .ui-controlgroup-controls
+		{
+		width: 30%;
+	}
+}

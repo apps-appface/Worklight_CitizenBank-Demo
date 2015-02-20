@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+div#responseVerificationPage {
+	color: #1E60AD;
+	/* 	color: #DC2B40; */
+	background-color: #D4E6FC;
+}
+
+select#workCoverProducts {
+	color: #DC2B40;
+}
+
+#pcbuARALetterYes {
+	color: #DC2B40;
+}
+
+#formLabels,#issueDetails,#araComments {
+	color: #DC2B40;
+}
+
+.ui-radio-on {
+	color: white !important;
+}
+
+@media ( min-width : 28em) {
+	div#rvpContainer {
+		margin: 2%;
+		padding: 2%;
+		color: #8C3030;
+		text-shadow: none;
+	}
+	.ui-field-contain>label,.ui-field-contain .ui-controlgroup-label,.ui-field-contain>.ui-rangeslider>label
+		{
+		font-size: 20px;
+		width: 68%;
+	}
+	.ui-field-contain>label    ~ [class*="ui-"],.ui-field-contain .ui-controlgroup-controls
+		{
+		width: 30%;
+	}
+} 
